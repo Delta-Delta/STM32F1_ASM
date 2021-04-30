@@ -152,18 +152,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>78</LineNumber>
+          <LineNumber>81</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134217792</Address>
+          <Address>134217964</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\Src\main.s</Filename>
+          <Filename>.\Src\usart1.s</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM32_M3_ASM_USART\Src/main.s\78</Expression>
+          <Expression>\\STM32_M3_ASM_USART\Src/usart1.s\81</Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>

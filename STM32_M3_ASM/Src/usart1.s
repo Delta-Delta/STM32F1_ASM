@@ -14,6 +14,9 @@ USART1_SR       EQU			(USART1+0x00)
 				AREA USART, CODE, READONLY
 				EXPORT USART1_Init   ;标号前面添加 EXPORT 使外部文件可以调用标号内容
 				EXPORT USART1_SendByte
+				EXPORT USART1_ReceiveByte
+					
+				GBLA   receiveData
 					
 USART1_Init
 				PUSH {R0,R1,R2, LR}
@@ -43,12 +46,14 @@ USART1_Init
 				LDR R0,[R1]
 				MOV R0,#0x341
 				STR R0,[R1]
+				
+				CPSID i				; // Disable all interrupts except NMI(includes a non-maskable interrupt).set PRIMASK
 			 
                 POP {R0,R1,R2,PC}
 
 
 USART1_SendByte
-				PUSH   {R0 - R3} 
+				PUSH   {R0,R1,R2,R3,LR} 
 				LDR    R2, =USART1_DR   
 				STR    R0, [R2] 
 b1 
@@ -57,11 +62,30 @@ b1
 				TST    r2, #0x40 
 				BEQ    b1 
 				;发送完成(Transmission complete)等待 
-				POP    {r0 - r3} 
-				BX     lr 
+				POP    {R0,R1,R2,R3,PC} 
+				
 
 
+USART1_ReceiveByte
+				PUSH   {R0,R1,R2,R3,LR}
+				
 
-
+b2				
+				;判断RXNE位是否为1
+				LDR    R0, =USART1_SR  
+				LDR    R0, [R0] 
+				
+				TST    R0, #0x20
+				BEQ	   b2
+				
+				LDR    R2, =USART1_DR  
+				LDR    R0, [R2]
+				AND    R0,R0,#0xFF
+				;BL     USART1_SendByte
+				
+				
+				
+				POP   {R0,R1,R2,R3,PC}
+				
 
 				END
