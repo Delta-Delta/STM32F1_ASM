@@ -16,7 +16,7 @@ USART1_SR       EQU			(USART1+0x00)
 				EXPORT USART1_SendByte
 				EXPORT USART1_ReceiveByte
 					
-				GBLA   receiveData
+				;GBLA   receiveData
 					
 USART1_Init
 				PUSH {R0,R1,R2, LR}
