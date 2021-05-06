@@ -59,6 +59,8 @@ LEDC13_Init
 				EXTERN USART1_SendByte
 				EXTERN USART1_ReceiveByte
 				EXTERN Flash_Unlock
+				EXTERN Flash_ErasePage
+				EXTERN Flash_WriteByte
                 
                 LDR R1,=RCC_APB2ENR	 ;取寄存器地址
 				LDR R0,[R1]			;读取要操作的寄存器（内存）数据到寄存器R0
@@ -72,12 +74,17 @@ LEDC13_Init
 				ORR R0,R0,#0x300000
 				STR R0,[R1]
              
-				BL USART1_Init
+				;BL USART1_Init
 				
 				;mov    r0, #'H' 
 				;bl     USART1_SendByte
 				;bl	   USART1_ReceiveByte
 				BL	Flash_Unlock
+				LDR R3, =0x8001000
+				BL Flash_ErasePage
+				LDR R4,=0xac35
+				BL Flash_WriteByte
+				
 			 
                 POP {R0,R1,PC}
 				
