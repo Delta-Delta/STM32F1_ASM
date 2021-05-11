@@ -14,6 +14,8 @@ LR_IROM1 0x08000000 0x00000800  {    ; load region size_region
     usart1.o (+ZI +RW)
     flash.o (+ZI +RW)
     protocol_erase.o (+ZI +RW)
+    protocol_event.o (+ZI +RW)
+    protocol_go.o (+ZI +RW)
    .ANY (+RW +ZI)
   }
 }

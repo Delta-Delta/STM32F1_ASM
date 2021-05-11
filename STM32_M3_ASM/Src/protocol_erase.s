@@ -17,7 +17,7 @@ NACK			EQU			0x1F
 erasePageNumber DCB 1
 
 
-				AREA USART, CODE, READONLY
+				AREA FLASH_ERASE, CODE, READONLY
 				EXPORT Erase_0x43   ;标号前面添加 EXPORT 使外部文件可以调用标号内容
 				;EXPORT USART1_SendByte
 				;EXPORT USART1_ReceiveByte
