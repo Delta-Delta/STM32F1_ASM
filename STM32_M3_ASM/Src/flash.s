@@ -13,8 +13,9 @@ FLASH_WRPR				EQU			(FLASH_BASE+0x20)
 
 	
 				AREA Variable_Local,DATA,READWRITE
-flagErase DCB 1
-	
+eventFlag DCW 1
+;第零位代表是否开启读保护	 1:开启  0:没有开启
+
 
 				AREA |Flash_If_ASM|, CODE, READONLY
 				;EXPORT Flash_Init   ;标号前面添加 EXPORT 使外部文件可以调用标号内容
@@ -22,7 +23,8 @@ flagErase DCB 1
 				EXPORT Flash_WriteByte
 				EXPORT Flash_ReadByte
 				EXPORT Flash_ErasePage
-					
+				EXPORT Flash_IsRdpEnable
+				EXPORT eventFlag
 					
 				
 			
@@ -160,5 +162,43 @@ Flash_ReadByte
 				
 				POP   {R0,R1,R2,R3,R4,PC}
 				
+				
+				
+				
+				
+				
+				
+;判断是否设置读保护
+Flash_RdpEnable
+				LDR  R3,=eventFlag
+				LDR  R4,[R3]
+				ORR  R4,R4,#0x01
+				STR  R4,[R3]
+				B    Flash_IsRdpEnable_Finish
 
+Flash_RdpDisenable
+				;为0，RDP读保护没有开启
+				LDR  R3,=eventFlag
+				LDR  R4,[R3]
+				BIC  R4,R4,#0x01
+				STR  R4,[R3]
+				B    Flash_IsRdpEnable_Finish
+
+Flash_IsRdpEnable
+				PUSH   {R0,R1,R2,R3,R4,LR}
+
+				LDR  R1,=FLASH_OBR	    ;取寄存器地址
+				LDR  R0,[R1]			;读取要操作的寄存器（内存）数据到寄存器R0
+				TST  R0,#0x02			;不为0执行 Flash_RdpEnable
+				BNE  Flash_RdpEnable
+				BEQ  Flash_RdpDisenable
+				
+
+				
+
+Flash_IsRdpEnable_Finish				
+				POP   {R0,R1,R2,R3,R4,PC}
+				
+				
+				
 				END

@@ -42,7 +42,7 @@ __Vectors       DCD     __initial_sp               ; Top of Stack
 				
 				
 Reset_Handler 
-                BL LEDC13_Init
+				BL LEDC13_Init
 MainLoop        BL LED_ON
                 BL Delay
                 BL LED_OFF
@@ -61,6 +61,7 @@ LEDC13_Init
 				EXTERN Flash_Unlock
 				EXTERN Flash_ErasePage
 				EXTERN Flash_WriteByte
+				EXTERN Flash_IsRdpEnable
                 
                 LDR R1,=RCC_APB2ENR	 ;取寄存器地址
 				LDR R0,[R1]			;读取要操作的寄存器（内存）数据到寄存器R0
@@ -84,6 +85,8 @@ LEDC13_Init
 				BL Flash_ErasePage
 				LDR R4,=0xac35
 				BL Flash_WriteByte
+				
+				BL Flash_IsRdpEnable
 				
 			 
                 POP {R0,R1,PC}

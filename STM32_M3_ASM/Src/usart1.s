@@ -9,12 +9,16 @@ USART1_BRR		EQU			(USART1+0x08)
 USART1_DR       EQU			(USART1+0x04)		
 USART1_SR       EQU			(USART1+0x00)	
 
-
+				AREA Receive_Data,DATA,READWRITE
+receiveByte1    DCB   1
+receiveByte2	DCB	  1
 
 				AREA USART, CODE, READONLY
 				EXPORT USART1_Init   ;标号前面添加 EXPORT 使外部文件可以调用标号内容
 				EXPORT USART1_SendByte
 				EXPORT USART1_ReceiveByte
+					
+				EXPORT receiveByte1
 					
 				;GBLA   receiveData
 					
@@ -81,6 +85,9 @@ b2
 				LDR    R2, =USART1_DR  
 				LDR    R0, [R2]
 				AND    R0,R0,#0xFF
+				
+				LDR    R3,=receiveByte1
+				STR	   R0,[R3]
 				;BL     USART1_SendByte
 				
 				

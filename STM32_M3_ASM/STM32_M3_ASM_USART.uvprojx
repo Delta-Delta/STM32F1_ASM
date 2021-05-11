@@ -581,6 +581,11 @@
                 </FileArmAds>
               </FileOption>
             </File>
+            <File>
+              <FileName>protocol_erase.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\Src\protocol_erase.s</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

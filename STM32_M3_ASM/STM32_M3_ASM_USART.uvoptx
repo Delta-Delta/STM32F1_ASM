@@ -152,22 +152,6 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>83</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134217784</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\Src\main.s</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\STM32_M3_ASM_USART\Src/main.s\83</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
           <LineNumber>89</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>134217798</Address>
@@ -181,28 +165,12 @@
           <ExecCommand></ExecCommand>
           <Expression>\\STM32_M3_ASM_USART\Src/main.s\89</Expression>
         </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>132</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134218056</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\Src\flash.s</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\STM32_M3_ASM_USART\Src/flash.s\132</Expression>
-        </Bp>
       </Breakpoint>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>0x8001000</ItemText>
+          <ItemText>0x20000000</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -303,6 +271,18 @@
       <bDave2>0</bDave2>
       <PathWithFileName>.\Src\flash.s</PathWithFileName>
       <FilenameWithoutPath>flash.s</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>4</FileNumber>
+      <FileType>2</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Src\protocol_erase.s</PathWithFileName>
+      <FilenameWithoutPath>protocol_erase.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
