@@ -13,7 +13,8 @@ FLASH_WRPR				EQU			(FLASH_BASE+0x20)
 
 	
 				AREA Variable_Local,DATA,READWRITE
-eventFlag DCW 1
+eventFlag 		  DCW		 1
+writeWordBuffer   DCW		 1
 ;第零位代表是否开启读保护	 1:开启  0:没有开启
 
 
@@ -25,6 +26,7 @@ eventFlag DCW 1
 				EXPORT Flash_ErasePage
 				EXPORT Flash_IsRdpEnable
 				EXPORT eventFlag
+				EXPORT writeWordBuffer
 					
 				
 			
@@ -199,6 +201,23 @@ Flash_IsRdpEnable
 Flash_IsRdpEnable_Finish				
 				POP   {R0,R1,R2,R3,R4,PC}
 				
+		
+
+
+
+
+
+
+
+Flash_WriteWord
+				PUSH   {R0-R7,LR}
 				
+				;LDR     R0,=writeWordBuffer
+				;LDR     R1,[R0]
+				
+
+
+				POP    {R0-R7,PC}
+
 				
 				END
