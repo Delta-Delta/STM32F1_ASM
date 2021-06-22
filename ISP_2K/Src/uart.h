@@ -1,3 +1,5 @@
+#pragma once
+
 #include "address.h"
 
 volatile uint8_t delay=0xFF;
@@ -52,11 +54,11 @@ void usart_send(uint8_t data)
 
 }
 
-void usart_receive(uint8_t *data)
+uint8_t usart_receive(uint8_t *data)
 {
 	while((USART1_SR&0x20)==0);
 	*data=USART1_DR;
-	
+	return *data;
 
 }
 
@@ -91,3 +93,4 @@ void usart_send_multiple(uint8_t data[],uint8_t number)
 	}
 	
 }
+

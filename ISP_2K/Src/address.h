@@ -1,3 +1,5 @@
+#pragma once
+
 #include "stdint.h"
 
 #define RCC_APB2ENR   *((volatile unsigned int*)(0x40021000+0x18))
